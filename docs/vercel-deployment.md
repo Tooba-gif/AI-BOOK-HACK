@@ -52,10 +52,10 @@ This project includes a `vercel.json` file in the frontend directory with the fo
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "github": {
@@ -86,7 +86,7 @@ This project includes a `vercel.json` file in the frontend directory with the fo
 
 This configuration ensures that:
 - The build output directory is set to `build`
-- All routes are handled by the index.html file (important for client-side routing)
+- All routes are handled by the index.html file using rewrites (important for client-side routing)
 - GitHub integration is enabled
 - Proper headers are set for API requests
 
