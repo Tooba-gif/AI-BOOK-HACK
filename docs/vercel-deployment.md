@@ -57,6 +57,29 @@ This project includes a `vercel.json` file in the frontend directory with the fo
       "src": "/(.*)",
       "dest": "/index.html"
     }
+  ],
+  "github": {
+    "enabled": true,
+    "autoJobCancelation": true
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
   ]
 }
 ```
@@ -64,6 +87,8 @@ This project includes a `vercel.json` file in the frontend directory with the fo
 This configuration ensures that:
 - The build output directory is set to `build`
 - All routes are handled by the index.html file (important for client-side routing)
+- GitHub integration is enabled
+- Proper headers are set for API requests
 
 ## Troubleshooting
 
@@ -72,9 +97,20 @@ If you encounter a 404 error after deployment:
 2. Ensure the Output Directory is set to `build`
 3. Check that the build command is `npm run build`
 4. Confirm that the `vercel.json` file exists in the frontend directory
+5. Make sure you're accessing the root path, not a subdirectory
+6. Check if your custom domain settings (if any) are properly configured
 
 ## Additional Notes
 
 - The frontend is built with Docusaurus, which generates static files in the `build` directory
 - The site supports multiple languages (English and Urdu)
-- Make sure to update the `url` and `baseUrl` in `docusaurus.config.js` to match your deployment URL
+- Make sure to update the `url` in `docusaurus.config.js` to match your deployment URL
+- The baseUrl in `docusaurus.config.js` should remain as '/' for Vercel deployments
+- After deployment, you may need to clear your browser cache to see the latest changes
+
+## Redeployment
+
+If you've made changes to your code:
+1. Push the changes to your GitHub repository
+2. Vercel will automatically redeploy if GitHub integration is enabled
+3. Or manually trigger a redeployment from the Vercel dashboard
