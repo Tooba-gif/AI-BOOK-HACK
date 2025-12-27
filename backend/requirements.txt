@@ -1,0 +1,16 @@
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.6.0
+sqlalchemy==2.0.25
+asyncpg==0.29.0
+better-exceptions==0.3.3
+python-multipart==0.0.9
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+python-dotenv==1.0.1
+qdrant-client>=1.7.0
+openai==1.12.0
+langchain==0.1.9
+langchain-community==0.0.24
+langchain-openai==0.0.5
+python-slugify==8.0.4
